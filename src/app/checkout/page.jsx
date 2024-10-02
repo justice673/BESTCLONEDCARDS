@@ -152,7 +152,7 @@ export default function Page() {
               <option value="KI">Kiribati</option>
               <option value="KW">Kuwait</option>
               <option value="KG">Kyrgyzstan</option>
-              <option value="LA">Lao People's Democratic Republic</option>
+              <option value="LA">Lao People&#39;s Democratic Republic</option>
               <option value="LV">Latvia</option>
               <option value="LB">Lebanon</option>
               <option value="LS">Lesotho</option>
