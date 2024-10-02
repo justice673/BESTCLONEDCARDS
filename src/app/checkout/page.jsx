@@ -338,7 +338,7 @@ export default function Page() {
           </thead>
           <tbody>
             <tr>
-              <td>Counterfeit €5 Euro Bills - 3,000 Euro × 2</td>
+              <td>Counterfeit €5 Euro Bills - 3,000 Euro * 2</td>
               <td>$620.00</td>
             </tr>
             <tr>
