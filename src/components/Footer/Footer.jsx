@@ -1,42 +1,58 @@
 import React from 'react';
 import styles from './Footer.module.css';
-import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <div className={styles.footer}>
-        <div className={styles.container}>
-            <div className={styles.footer1}>
-                <h3>Download Our App</h3>
-                <p>Download App for Android and ios mobile phone</p>
-                <div className={styles.appLogo}>
-                    <Image src="/images/google-play-badge-logo.svg" width={50} height={50}/>
-                    <Image src="/images/images.png" width={50} height={17}/>
-                </div>
-            </div>
-            <div className={styles.footer2}>
-                <h3>Download Our App</h3>
-                <p>Shoptech is a tech-focused e-commerce platform that offers a wide range of products with an easy comparison system and fast, user-friendly experience. It caters to tech enthusiasts by providing quick support and reliable product information.</p>
-            </div>
-            <div className={styles.footer3}>
-                <h3>Useful Links</h3>
-                <ul>
-                    <li>Coupons</li>
-                    <li>Blog Post</li>
-                    <li>Return Policy</li>
-                    <li>Contact Us</li>
-                </ul>
-            </div>
-            <div className={styles.footer4}>
-                <h3>Follow Us</h3>
-                <ul>
-                    <li>Youtube</li>
-                    <li>Facebook</li>
-                    <li>Instagram</li>
-                    <li>Twitter</li>
-                </ul>
-            </div>
+    <footer className={styles.footer}>
+      <div className={styles.mainContainer}>
+      <div className={styles.container}>
+        <div className={styles.logoSection}>
+          {/* <img src="/logo.png" alt="Logo" className={styles.logo} /> */}
+          <p>Los Angeles, California</p>
+          <p>CA, United States | About us</p>
+          <p>Email: info@bestclonecards.com</p>
+          <p>Phone: +1 </p>
         </div>
-    </div>
-  )
+
+        <div className={styles.linksSection}>
+          <div className={styles.column}>
+            <h3>Our Category</h3>
+            <ul>
+              <li><Link href={"/clonecard"}>Clone Card</Link></li>
+              <li><Link href={"/undetectablebanknotes"}>Undetectable Banknotes</Link></li>
+              <li><Link href={"/eurobills"}>Euro Bills</Link></li>
+              <li><Link href={"/usdbills"}>USD Bills</Link></li>
+              <li><Link href={"/gbpbills"}>GPB Bills</Link></li>
+              <li><Link href={"/cadbills"}>CAD Bills</Link></li>
+            </ul>
+          </div>
+
+          <div className={styles.column}>
+            <h3>Site Support</h3>
+            <ul>
+              <li><Link href={"/trackyourorders"}>Track your order</Link></li>
+              <li><Link href={"/faq"}>FAQ</Link></li>
+              <li><Link href={"/shop"}>Shop</Link></li>
+              <li><Link href="#">Customer Reviews</Link></li>
+            </ul>
+          </div>
+
+          <div className={styles.column}>
+            <h3>Our Policy</h3>
+            <ul>
+              <li><Link href={"/privacypolicy"}>Privacy policy</Link></li>
+              <li><Link href={"/shipping"}>Shipping and Return</Link></li>
+              <li><Link href={"/termsandcondition"}>Terms and Conditions</Link></li>
+              <li><Link href={"/contact"}>Contact</Link></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div className={styles.copyright}>
+      <p>Copyright 2024 © Best Cloned Cards</p>
+      </div>
+    </footer>
+  );
 }

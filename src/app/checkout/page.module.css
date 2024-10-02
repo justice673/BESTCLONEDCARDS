@@ -1,0 +1,128 @@
+.checkoutContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .billingDetails, .orderSummary {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 48%;
+  }
+  
+  .billingDetails h2, .orderSummary h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .inputGroup {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .inputGroup1, .inputGroup2 {
+    flex: 1;
+  }
+  
+  .inputGroup3, .inputGroup4 {
+    margin-bottom: 15px;
+  }
+  
+  .inputGroup1 label, .inputGroup2 label, .inputGroup3 label, .inputGroup4 label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .inputGroup1 input, .inputGroup2 input, .inputGroup3 input, .inputGroup4 input, .inputGroup3 select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .inputGroup4 input:first-child {
+    margin-right: 10px; /* Adds space between the two inputs */
+  }
+  
+  .inputGroup4 input {
+    width: 50%; /* Makes both inputs fill the available space equally */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .inputStyles2{
+      height: 150px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+  
+  .account, .ship{
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 0.5em 0;
+  }
+  .ship{
+    padding-bottom: 1em;
+  }
+  .orderSummary table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+  }
+  
+  .orderSummary th, .orderSummary td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .orderSummary td:last-child {
+    text-align: right;
+  }
+  
+  .radioGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: transparent; /* Removed red background */
+  }
+  
+  .radioGroup input {
+    margin-right: 10px;
+  }
+  
+  .paymentOption {
+    margin-top: 20px;
+  }
+  
+  .paymentOption label {
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  .paymentOption p {
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+  
+  .form span {
+    color: red;
+  }
+  
+  @media (max-width: 768px) {
+    .checkoutContainer {
+      flex-direction: column;
+    }
+  
+    .billingDetails, .orderSummary {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  
