@@ -1,100 +1,159 @@
+/* Base Styles (Laptop/Desktop) */
 .navbar {
   position: fixed; /* Fixes the navbar to the top of the viewport */
-  width: 100%; 
-  z-index: 1000; 
-  /* margin-bottom: 3em; */
+  width: 100%;
+  z-index: 1000;
+}
 
+.mainLeft {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 12em;
+  background-color: #faf9f9b7; /* Optional: light background for contrast */
+  min-width: 0; /* Prevents overflowing on small screens */
 }
-  /* Main content */
-  .mainLeft {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center ; 
-    padding-top: 12em;
-    background-color: #faf9f9b7; /* Optional: light background for contrast */
-    min-width: 0; /* Prevents overflowing on small screens */
-  }
-  
-  .new {
-    color: #0A2A4A;
-    font-weight: 900;
-    margin-bottom: 1em;
-    font-size: 2rem;
-  }
-  
-  /* Labels styling */
-  .inputStyles1 {
-    display: block;
-    color: #0A2A4A;
-    font-weight: bold;
-    margin-bottom: 0.5em;
-  }
-  
-  /* Input and textarea styling */
-  .inputStyles, .inputStyles2 {
-    border: 2px solid #d1d5db;
-    border-radius: 0.375rem;
-    padding: 0.5rem;
-    width: 700px; 
-    height: 40px;
-    margin-bottom: 1.5rem;
-    /* border: none; */
+
+.new {
+  color: #0A2A4A;
+  font-weight: 900;
+  margin-bottom: 1em;
+  font-size: 2rem;
 }
-.inputStyles:focus,.inputStyles2:focus{
-    outline: 2px solid #0A2A4A;
+
+/* Labels styling */
+.inputStyles1 {
+  display: block;
+  color: #0A2A4A;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+/* Input and textarea styling */
+.inputStyles,
+.inputStyles2 {
+  border: 2px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  width: 700px;
+  height: 40px;
+  margin-bottom: 1.5rem;
+}
+
+.inputStyles:focus,
+.inputStyles2:focus {
+  outline: 2px solid #0A2A4A;
 }
 
 .inputStyles2 {
-    height: 100px;
+  height: 100px;
+}
+
+/* Photo upload styling */
+.photo {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+}
+
+.addPhoto {
+  height: 20em;
+  width: 20em;
+  color: grey;
+  background-color: transparent;
+  border: 1px solid #D1D5DB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.addPhoto i {
+  font-size: 1.5em;
+  margin-right: 8px;
+}
+
+.previewImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+/* Save button styling */
+.saveButton {
+  background-color: #0A2A4A;
+  color: white;
+  padding: 0.7em 1.2em;
+  width: 7em;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transform: translateX(18em);
+}
+
+.saveButton:hover {
+  background-color: #4682B4;
+}
+
+/* Responsive Design for Tablet Screens */
+@media (max-width: 1024px) {
+  .inputStyles,
+  .inputStyles2 {
+    width: 90%; /* Reduce input width for tablets */
   }
-  
-  /* Photo upload styling */
-  .photo {
-    width: 100%;
-    max-width: 600px; 
-    margin-bottom: 1.5rem;
-  }
-  
+
   .addPhoto {
-    height: 20em;
-    width: 20em;
-    color: grey;
-    background-color: transparent;
-    border: 1px solid #D1D5DB;
-    display: flex;               /* Align items inside the button */
-    justify-content: center;      /* Center horizontally */
-    align-items: center;          /* Center vertically */
-    cursor: pointer;              /* Make it look clickable */
-    overflow: hidden;            
-    position: relative;
+    height: 15em; /* Reduce photo upload box size for tablets */
+    width: 15em;
   }
-  
-  .addPhoto i {
-    font-size: 1.5em;
-    margin-right: 8px; 
-  }
-  .previewImage {
-    object-fit: cover;          
-    width: 100%;                
-    height: 100%;               
-    position: absolute;          
-  }
-  
+
   .saveButton {
-    background-color: #0A2A4A;
-    color: white;
-    padding: 0.7em 1.2em;
-    width: 7em;
-    border-radius: 0.375rem;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    /* margin-left: 30em; */
-    transform: translateX(18em);
-    }
-  
+    transform: translateX(10em); /* Adjust the save button position */
+  }
+}
+
+/* Responsive Design for Mobile Screens */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1em; /* Add padding for smaller screens */
+  }
+
+  .mainLeft {
+    padding-top: 10em; /* Reduce top padding for mobile */
+    padding: 0 1em; /* Add horizontal padding for better spacing on mobile */
+  }
+
+  .new {
+    font-size: 1.5rem; /* Reduce heading size on mobile */
+  }
+
+  .inputStyles,
+  .inputStyles2 {
+    width: 100%; /* Full width inputs for mobile */
+    height: 40px;
+  }
+
+  .inputStyles2 {
+    height: 80px; /* Slightly smaller textarea */
+  }
+
+  .addPhoto {
+    height: 12em; /* Reduce photo upload box size for mobile */
+    width: 12em;
+  }
+
+  .saveButton {
+    width: 100%; /* Full-width button for mobile */
+    transform: translateX(0); /* Center the save button */
+    margin-top: 1em;
+  }
+
   .saveButton:hover {
     background-color: #4682B4;
   }
-  
+}
