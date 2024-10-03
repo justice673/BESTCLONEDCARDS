@@ -169,7 +169,8 @@ export default function Page() {
             significant counterfeiting of <span> Euro banknotes </span> and
             coins since the launch of the currency in 2002, but considerably
             less than that of the US dollar.{" "}
-            <Link href={"/"}> buy cloned credit cards online. </Link>{" "}
+            <Link href={"/"}> buy cloned credit cards online. </Link>
+            {" "}
           </p>
         </section>
         <section className={styles.section}>
