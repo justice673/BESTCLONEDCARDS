@@ -33,6 +33,7 @@ const Page = () => {
           <Navbar/>
         </div>
         <div className={styles.mainLeft}>
+          <button className={styles.products} href={"/products"}>All Products</button>
           <form onSubmit={handleSubmit}>
             <h1 className={styles.new}>New Product</h1>
             <label className={styles.inputStyles1}>Product name</label>
