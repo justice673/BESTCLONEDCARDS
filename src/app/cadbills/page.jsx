@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import React, { useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
+import Link from "next/link";
 import Footer from "@/components/Footer/Footer";
 
 export default function Page() {
