@@ -387,10 +387,10 @@ export default function Page() {
           <p>Or</p>
           <p></p>
           <p>or scan the QR code below</p>
-          <Image src={"/images/images.jpeg"}
+          <Image src={"/images/QR_code.png"}
            alt=""
-           width={410}
-           height={450}
+           width={550}
+           height={500}
            />
           <p>After completing payment, send the transaction ID/hash or screenshot of payment for verification</p>
           <p>You can buy bitcoin at <Link href={"/"}>changelly.com/buy/btc</Link>, or <Link href={"/"}> moonpay.com</Link> </p>

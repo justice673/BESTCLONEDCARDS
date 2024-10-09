@@ -412,3 +412,72 @@
         font-weight: bold;
     }
 }
+/* ==========================  Smartwatch styles (up to 400px) =========================== */
+@media (max-width: 400px) {
+    
+    .mainNav {
+        display: flex;
+        /* justify-content: space-between; */
+        background-color: #0A2A4A;
+        padding: 1em;
+        width: 100%;
+        align-items: center;
+    }
+
+    .mainNav a {
+        color: #4682B4;
+        text-decoration: none;
+        font-size: 12px; /* Reduced font size */
+    }
+
+    .mainNav2 {
+        gap: 0.3em;
+        padding-right: 0.5em;
+    }
+
+    .mainNav2 p {
+        color: white;
+        font-size: 12px;
+    }
+/* 
+    .menu {
+        margin-left: 0.5em;
+    } */
+
+    /* Hide the search bar in mainNav */
+    .searchContainer {
+        display: none;
+    }
+
+    .navLinksContainer {
+        top: 4em;
+        width: 80%; /* Smaller width */
+        padding: 1rem;
+    }
+
+    .navLinksContainer .searchContainer1 {
+        border-radius: 25px; /* Slightly less rounded for space */
+        padding: 0.2em;
+    }
+
+    .navLinksContainer .searchInput {
+        font-size: 12px; /* Adjust font size */
+    }
+
+    .navLinksContainer nav a {
+        padding: 0.5em 0;
+        font-size: 0.9rem;
+    }
+
+    /* Cart Icon and Badge */
+    .cartIconContainer i {
+        font-size: 16px; /* Smaller icon */
+    }
+
+    .cartBadge {
+        top: -5px;
+        right: -5px;
+        padding: 1px 4px;
+        font-size: 10px;
+    }
+}
