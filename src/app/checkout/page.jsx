@@ -1,6 +1,8 @@
 "use client";
 import React, {useState} from "react";
 import styles from "./page.module.css";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Page() {
 
@@ -350,7 +352,7 @@ export default function Page() {
                     type="radio"
                     id="free-shipping"
                     name="shipping"
-                    checked
+                    // checked
                   />
                   <label htmlFor="free-shipping">Free shipping (2 days)</label>
                 </div>
@@ -379,9 +381,22 @@ export default function Page() {
           <input type="radio" id="bitcoin" name="payment" checked />
           <label htmlFor="bitcoin">Bitcoin - BTC</label>
           <p>
-            To complete your order, send payments to the bitcoin address shown
-            during checkout.
+            To complete your order, send payments to the bitcoin (BTC) wallet address  below 
           </p>
+          <p></p>
+          <p>Or</p>
+          <p></p>
+          <p>or scan the QR code below</p>
+          <Image src={"/images/images.jpeg"}
+           alt=""
+           width={410}
+           height={450}
+           />
+          <p>After completing payment, send the transaction ID/hash or screenshot of payment for verification</p>
+          <p>You can buy bitcoin at <Link href={"/"}>changelly.com/buy/btc</Link>, or <Link href={"/"}> moonpay.com</Link> </p>
+          <p>Always use our wallet address above as the destination address for all BTC purchasing platforms.</p>
+          <button className={styles.orderBtn}>PLACE ORDER</button>
+          <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <Link href={"/privacypolicy"}>privacy policy</Link>. </p>
         </div>
       </div>
     </div>

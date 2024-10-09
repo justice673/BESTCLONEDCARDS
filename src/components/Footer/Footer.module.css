@@ -11,15 +11,11 @@
   display: flex;
   justify-content: space-between;
   max-width: 1200px;
+  gap: 3em;
   margin: 0 auto;
   flex-wrap: wrap;
   border-bottom: 3px solid white;
   /* background-color: red; */
-}
-
-.logoSection {
-  max-width: 300px;
-  /* padding-right: 1em; */
 }
 
 .logo {
@@ -90,19 +86,22 @@
 @media (max-width: 768px) {
   .container {
     flex-direction: column; /* Stacks the sections vertically */
-    align-items: center; /* Centers the content */
+    /* align-items: center;  */
     width: 100%;
   }
 
   .linksSection {
     flex-direction: column;
-    align-items: center; /* Ensures content is centered */
+    align-items: center; 
+    /* background-color: red; */
     margin-top: 20px;
   }
-
+  
   .column {
-    margin: 0 0 20px; /* Adds spacing between columns */
-    text-align: center; /* Centers the text */
+    margin: 0 0 20px;
+    /* margin-left: -2em;  */
+    background-color: red;
+    /* text-align: center;  */
   }
 
   .logoSection {
@@ -113,10 +112,6 @@
     text-align: center;
   }
 
-  .whatsappSection {
-    text-align: center;
-    margin-top: 20px;
-  }
 }
 @media (max-width: 480px) {
   .container {
