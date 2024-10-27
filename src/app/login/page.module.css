@@ -11,13 +11,26 @@
     border-radius: 5px;
     margin-top: 2em;
     margin-bottom: 2em;
+    /* background-color: red; */
     position: relative; /* Add this line to position the close button absolutely within this container */
 }
 
+.inputContainer {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  
+  .inputContainer i:first-child {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #33333372;
+  }
+
 .inputstyle{
     width: 100%;
-    padding: 15px 10px;
-    margin-bottom: 20px;
+    padding: 10px 30px 10px 30px;
     border-radius: 5px;
     border: 1px solid #ddd;
     transition: background-color 0.3s ease;
@@ -25,28 +38,6 @@
 
 .inputstyle:hover {
     border-color: skyblue;
-}
-
-.separator {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #aaa;
-}
-
-.separator::before,
-.separator::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #aaa;
-}
-
-.separator::before {
-    margin-right: .25em;
-}
-
-.separator::after {
-    margin-left: .25em;
 }
 
 .buttonstyle{
@@ -61,12 +52,4 @@
 
 .buttonstyle:hover {
     border-color: skyblue;
-}
-
-.closeButton {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: large; 
-    border-radius: 20px;
 }

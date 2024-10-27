@@ -1,37 +1,57 @@
+"use client";
 import Navbar from '@/components/Navbar/Navbar';
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './page.module.css';
 import Link from 'next/link';
+// Make sure to import Font Awesome in your project
 
-export default function page() {
+export default function Page() {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
+    
     <>
-      <Navbar/>
-    <div>
-         <div className={styles.logincontainer}>
-            <Link href={"/"}>
-      <div className={styles.closeButton}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-          <line x1="0" y1="0" x2="20" y2="20" stroke="skyblue" stroke-width="6"/>
-          <line x1="20" y1="0" x2="0" y2="20" stroke="skyblue" stroke-width="6"/>
-        </svg>
-      </div>     
-      </Link>           
-      <h2>Log In</h2>
-      <form>
-          <input type="email" name="email"  placeholder='Email' required className={styles.inputstyle} />
-          <input type="password" name="password"  placeholder='Password' required className={styles.inputstyle}/>
-        <button type="submit"  style={{ backgroundColor: 'skyblue', color: 'white' }} className={styles.buttonstyle}>LOG IN</button>
-      </form>
-      <a href="#">Forgot password?</a>
-      <div className={styles.separator}>
-          <span>or log in with</span>
+      <Navbar />
+      <div>
+        <div className={styles.logincontainer}>
+          <h2>Log In</h2>
+          <form>
+            <div className={styles.inputContainer}>
+              <i className="fa fa-user" aria-hidden="true"></i>
+              <input type="text" name="name" placeholder='Name' required className={styles.inputstyle} />
+            </div>
+            <div className={styles.inputContainer}>
+              <i className="fa fa-lock" aria-hidden="true"></i>
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder='Password'
+                required
+                className={styles.inputstyle}
+              />
+              <i
+                className={`fa ${showPassword ? "fa-eye" : "fa-eye-slash"}`}
+                aria-hidden="true"
+                onClick={togglePasswordVisibility}
+                style={{
+                  position: 'absolute',
+                  right: '10px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  cursor: 'pointer',
+                  color: '#33333372',
+                }}
+              ></i>
+            </div>
+            <button type="submit" style={{ backgroundColor: 'skyblue', color: 'white' }} className={styles.buttonstyle}>LOG IN</button>
+          </form>
+          <a href="#">Forgot password?</a>
+        </div>
       </div>
-      <button  style={{ backgroundColor: '#3b5998', color: 'white' }} className={styles.buttonstyle}>Facebook </button>
-      <button  style={{ backgroundColor: 'white', color: 'grey', border: '1px solid #ddd' }} className={styles.buttonstyle}>Google</button>
-      <p>Need an account? <Link href={"/signup"}>Sign up</Link></p>
-    </div>
-    </div>
     </>
-  )
+  );
 }

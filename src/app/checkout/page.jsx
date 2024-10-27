@@ -376,29 +376,64 @@ export default function Page() {
             </tr>
           </tbody>
         </table>
+        <div className={styles.paymentOption}>
+          <input
+            type="radio"
+            id="paypal"
+            name="payment"
+            onChange={() => {
+              document.getElementById('paypal-details').style.display = 'block';
+              document.getElementById('bitcoin-details').style.display = 'none';
+            }}
+          />
+          <label htmlFor="paypal">PayPal</label>
+          <div id="paypal-details" style={{ display: 'none' }}>
+            <p>To complete your order using PayPal, follow these steps:</p>
+            <ol>
+              <li>Click the "Pay with PayPal" button below</li>
+              <li>Log in to your PayPal account</li>
+              <li>Review and confirm your payment</li>
+            </ol>
+            <button className={styles.paypalBtn}>Pay with PayPal</button>
+          </div>
+        </div>
 
         <div className={styles.paymentOption}>
-          <input type="radio" id="bitcoin" name="payment" checked />
+          <input
+            type="radio"
+            id="bitcoin"
+            name="payment"
+            defaultChecked
+            onChange={() => {
+              document.getElementById('bitcoin-details').style.display = 'block';
+              document.getElementById('paypal-details').style.display = 'none';
+            }}
+          />
           <label htmlFor="bitcoin">Bitcoin - BTC</label>
-          <p>
-            To complete your order, send payments to the bitcoin (BTC) wallet address  below 
-          </p>
-          <p></p>
-          <p>Or</p>
-          <p></p>
-          <p>or scan the QR code below</p>
-          <Image src={"/images/QR_code.png"}
-           alt=""
-           width={550}
-           height={500}
-           />
-          <p>After completing payment, send the transaction ID/hash or screenshot of payment for verification</p>
-          <p>You can buy bitcoin at <Link href={"/"}>changelly.com/buy/btc</Link>, or <Link href={"/"}> moonpay.com</Link> </p>
-          <p>Always use our wallet address above as the destination address for all BTC purchasing platforms.</p>
-          <button className={styles.orderBtn}>PLACE ORDER</button>
-          <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <Link href={"/privacypolicy"}>privacy policy</Link>. </p>
+          <div id="bitcoin-details">
+            
+            <p>
+              To complete your order, send payments to the bitcoin (BTC) wallet address below 
+            </p>
+            <p></p>
+            <p>Or</p>
+            <p></p>
+            <p>or scan the QR code below</p>
+            <Image src={"/images/QR_code.png"}
+             alt=""
+             width={550}
+             height={500}
+             />
+            <p>After completing payment, send the transaction ID/hash or screenshot of payment for verification</p>
+            <p>You can buy bitcoin at <Link href={"/"}>changelly.com/buy/btc</Link>, or <Link href={"/"}> moonpay.com</Link> </p>
+            <p>Always use our wallet address above as the destination address for all BTC purchasing platforms.</p>
+          </div>
         </div>
+
+        <button className={styles.orderBtn}>PLACE ORDER</button>
+        <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <Link href={"/privacypolicy"}>privacy policy</Link>. </p>
       </div>
     </div>
   );
 }
+

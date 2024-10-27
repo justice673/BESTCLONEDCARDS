@@ -19,7 +19,7 @@ export default function Footer() {
           <div className={styles.column}>
             <h3>Our Category</h3>
             <ul>
-              <li><Link href={"/clonecard"}>Clone Card</Link></li>
+              {/* <li><Link href={"/clonecard"}>Clone Card</Link></li> */}
               <li><Link href={"/undetectablebanknotes"}>Undetectable Banknotes</Link></li>
               <li><Link href={"/eurobills"}>Euro Bills</Link></li>
               <li><Link href={"/usdbills"}>USD Bills</Link></li>
@@ -33,7 +33,7 @@ export default function Footer() {
             <ul>
               <li><Link href={"/trackyourorders"}>Track your order</Link></li>
               <li><Link href={"/faq"}>FAQ</Link></li>
-              <li><Link href={"/shop"}>Shop</Link></li>
+              <li><Link href={"/products"}>Shop</Link></li>
               <li><Link href="#">Customer Reviews</Link></li>
             </ul>
           </div>
@@ -43,8 +43,8 @@ export default function Footer() {
             <ul>
               <li><Link href={"/privacypolicy"}>Privacy policy</Link></li>
               <li><Link href={"/shipping"}>Shipping and Return</Link></li>
-              <li><Link href={"/termsandcondition"}>Terms and Conditions</Link></li>
-              <li><Link href={"/contactus"}>Contact Us</Link></li>
+              <li><Link href={"/termsandconditions"}>Terms and Conditions</Link></li>
+              <li><Link href={"/contact"}>Contact Us</Link></li>
             </ul>
           </div>
         </div>

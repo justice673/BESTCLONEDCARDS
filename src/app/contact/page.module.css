@@ -1,0 +1,165 @@
+.container {
+    max-width: 600px;  /* Increased from 400px */
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #0A2A4A;
+    height: 80vh;
+  }
+  .backButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background-color: #0A2A4A;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    /* display: inline-block; */
+  }
+  
+  .backButton:hover {
+    background-color: #fff;
+    color: #0A2A4A;
+    border-color: #0A2A4A;
+  }
+  
+  .backButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+  }
+  
+  .backButton:active {
+    transform: translateY(1px);
+  }
+  .container h1{
+    transform: translateX(4.5em);
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 2em;
+  }
+  
+  .nameFields {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .inputGroup label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #fff;
+  }
+  
+  .inputGroup input,
+  .inputGroup textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: 3px solid #0A2A4A;
+    width: 100%;  /* Ensures inputs take full width of their container */
+  }
+  
+  .phoneInput {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;  /* Ensures phone input takes full width */
+  }
+  
+  .phonePrefix {
+    background-color: #f3f4f6;
+    padding: 10px;
+    font-size: 14px;
+    color: #6b7280;
+    border-right: 1px solid #ccc;
+  }
+  
+  .phoneInput input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+  }
+  .submitButton{
+    padding: 10px 0;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .submitButton:hover{
+    background-color: #918f8f;
+    color: #000;
+  }
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    margin: 0;
+    padding: 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .backButton {
+    position: static;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+
+  .container h1 {
+    transform: none;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form {
+    padding-top: 1em;
+  }
+
+  .nameFields {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .inputGroup {
+    width: 100%;
+  }
+
+  .phoneInput {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .phonePrefix {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+}
+
+  
+  

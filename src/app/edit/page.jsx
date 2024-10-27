@@ -35,11 +35,13 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>
             <div className={styles.cart1}>
+
               <Image
                 src="/images/samsunglappi-1.jpg"
                 width={250}
@@ -54,9 +56,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>
             <div className={styles.cart1}>
               <Image src="/images/ps5-1.jpg" width={250} height={250} />
@@ -69,9 +72,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star-half-stroke"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>
             <div className={styles.cart1}>
               <Image src="/images/iphone14pro-1.jpg" width={250} height={250} />
@@ -84,9 +88,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>
             <div className={styles.cart1}>
               <Image src="/images/jblspeaker-1.jpeg" width={250} height={250} />
@@ -99,9 +104,10 @@ export default function page() {
                 <i class="fa-regular fa-star"></i>
                 <i class="fa-regular fa-star"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>
             <div className={styles.cart1}>
               <Image src="/images/macbookair-1.jpg" width={250} height={250} />
@@ -114,9 +120,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>
             <div className={styles.cart1}>
               <Image src="/images/iphone15pro-1.jpg" width={250} height={250} />
@@ -129,9 +136,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>
             <div className={styles.cart1}>
               <Image src="/images/macbookpro-1.jpg" width={250} height={250} />
@@ -144,9 +152,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star-half-stroke"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>
             <div className={styles.cart1}>
               <Image src="/images/keyboard-1.jpg" width={250} height={250} />
@@ -159,9 +168,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star-half-stroke"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>{" "}
             <div className={styles.cart1}>
               <Image src="/images/monitor-1.jpg" width={250} height={250} />
@@ -174,9 +184,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star-half-stroke"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>{" "}
             <div className={styles.cart1}>
               <Image src="/images/headset-1.jpg" width={250} height={250} />
@@ -189,9 +200,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star-half-stroke"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>{" "}
             <div className={styles.cart1}>
               <Image src="/images/ultrawatch-1.jpg" width={250} height={250} />
@@ -204,9 +216,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star-half-stroke"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>{" "}
             <div className={styles.cart1}>
               <Image src="/images/s24ultra-1.jpg" width={200} height={250} />
@@ -219,9 +232,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star-half-stroke"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>{" "}
             <div className={styles.cart1}>
               <Image src="/images/series9-1.jpg" width={250} height={250} />
@@ -234,9 +248,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star-half-stroke"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>{" "}
             <div className={styles.cart1}>
               <Image src="/images/pixel9pro-1.jpg" width={250} height={250} />
@@ -249,9 +264,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star-half-stroke"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>{" "}
             <div className={styles.cart1}>
               <Image src="/images/pixel9-1.jpg" width={250} height={250} />
@@ -264,9 +280,10 @@ export default function page() {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-regular fa-star-half-stroke"></i>
               </div>
-              <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
+              <div className={styles.buttonContainer}>
+                <button className={styles.editBtn}>Edit</button>
+                <button className={styles.deleteBtn}>Delete</button>
+              </div>
             </div>
             {/* <div className={styles.pageBtn}>
                 <span>1</span>
@@ -280,5 +297,6 @@ export default function page() {
         <div>{/* <Footer/> */}</div>
       </div>
     </>
+
   );
 }

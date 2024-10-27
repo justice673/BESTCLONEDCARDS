@@ -10,12 +10,14 @@
 }
 
 .main {
-    background-image: url('/images/jU3xcPi4wPxwMp47Z6WSxb-415-80.jpg'); 
+    background-image: url('/images/dollarbill.jpeg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 70vh; /* Ensures full height from navbar to buttons */
     padding: 2em;
+    width: 100%;
+    height: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -117,7 +119,7 @@
 @media (max-width: 1000px) {
     
 .main {
-    background-image: url('/images/jU3xcPi4wPxwMp47Z6WSxb-415-80.jpg'); 
+    background-image: url('/images/dollarbill.jpeg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -243,18 +245,17 @@
 @media (max-width: 600px) {
     
 .main {
-    background-image: url('/images/jU3xcPi4wPxwMp47Z6WSxb-415-80.jpg'); 
+    /* background-image: url('/images/dollarbill.jpeg');  */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 30vh; /* Ensures full height from navbar to buttons */
     padding: 2em; 
-    height: 300px;
+    max-height: 300px;
     /* margin-top: -3em; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
 }
 
 .mainh {

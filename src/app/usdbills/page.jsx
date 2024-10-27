@@ -31,7 +31,7 @@ export default function Page() {
         </div>
       <div className={styles.cart}>
         <div className={styles.cart1}>
-          <Image src="/images/x-box2.jpeg" width={250} height={250} />
+          <Image src="/images/x-box2.jpeg" width={100} height={100} />
           <h4>Counterfeit USD Bills</h4>
           <h4>
             {" "}

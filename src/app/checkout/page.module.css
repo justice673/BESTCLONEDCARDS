@@ -102,12 +102,11 @@
   .radioGroup input {
     margin-right: 10px;
   }
-  
   .paymentOption {
     margin-top: 20px;
   }
-  .paymentOption img{
-    /* margin-left: -3em; */
+  
+  .paymentOption img {
     transform: translateX(-4.5em);
   }
   
@@ -120,15 +119,26 @@
     margin: 10px 0;
     font-size: 0.9em;
   }
-  .paymentOption a{
+  
+  .paymentOption a {
     color: #4682B4;
     text-decoration: none;
+  }
+  
+  .paymentOption ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .paymentOption li {
+    margin-bottom: 5px;
   }
   
   .form span {
     color: red;
   }
-  .orderBtn{
+  
+  .orderBtn, .paypalBtn {
     padding: 0.9em 2em;
     margin-top: 1em;
     width: 100%;
@@ -137,10 +147,18 @@
     cursor: pointer;
     border: none;
   }
-  .orderBtn:hover{
+  
+  .orderBtn:hover, .paypalBtn:hover {
     background-color: #4682B4;
   }
   
+  .paypalBtn {
+    background-color: #0070ba;
+  }
+  
+  .paypalBtn:hover {
+    background-color: #003087;
+  }
 /* ==========================  Tablet styles (up to 1000px) =========================== */
 @media (min-width:769px) and (max-width: 1000px) {
   .checkoutContainer {
