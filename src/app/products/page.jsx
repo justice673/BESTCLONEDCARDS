@@ -1,290 +1,123 @@
 "use client";
 import Navbar from "@/components/Navbar/Navbar";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Footer from "@/components/Footer/Footer";
 
-export default function page() {
-  const [products, setProducts] = useState(null);
-  const getProducts = async () => {
+export default function Page() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [sortOption, setSortOption] = useState("default");
+
+  const fetchProducts = async () => {
     try {
-      const response = await fetch("/api/addProduct");
-      const data = response.json();
+      setLoading(true);
+      const response = await fetch("/api/addProduct", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Fetched products:", data); // Debug log
       setProducts(data);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching products:", error);
+      setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
+
   useEffect(() => {
-    getProducts();
+    fetchProducts();
   }, []);
+
+  const handleSortChange = (event) => {
+    const value = event.target.value;
+    setSortOption(value);
+    
+    const sortedProducts = [...products].sort((a, b) => {
+      switch (value) {
+        case 'price':
+          return a.price - b.price;
+        // Add other sorting cases as needed
+        default:
+          return 0;
+      }
+    });
+    
+    setProducts(sortedProducts);
+  };
+
   return (
     <>
-      <div>
-        <Navbar />
-      </div>
+      <Navbar />
       <div className={styles.main}>
-        <div>
-          <div className={styles.main2}>
-            <h2>All Products</h2>
-            <select className={styles.select}>
-              <option>Default shorting</option>
-              <option>Short by price</option>
-              <option>Short by rating</option>
-              <option>Short by popularity</option>
-              <option>Short by sale</option>
-            </select>
-          </div>
-          <div className={styles.cart}>
-            <div className={styles.cart1}>
-              <Image src="/images/x-box2.jpeg" width={250} height={250} />
-              <h4>Cloned Cards</h4>
-              <p>$499.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>
-            <div className={styles.cart1}>
-              <Image
-                src="/images/samsunglappi-1.jpg"
-                width={250}
-                height={250}
-              />
-              <h4>Cloned Cards</h4>
-              <p>$369</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>
-            <div className={styles.cart1}>
-              <Image src="/images/ps5-1.jpg" width={250} height={250} />
-              <h4></h4>
-              <p>$499.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star-half-stroke"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>
-            <div className={styles.cart1}>
-              <Image src="/images/iphone14pro-1.jpg" width={250} height={250} />
-              <h4></h4>
-              <p>$899.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>
-            <div className={styles.cart1}>
-              <Image src="/images/jblspeaker-1.jpeg" width={250} height={250} />
-              <h4></h4>
-              <p>$325</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>
-            <div className={styles.cart1}>
-              <Image src="/images/macbookair-1.jpg" width={250} height={250} />
-              <h4></h4>
-              <p>$1299.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>
-            <div className={styles.cart1}>
-              <Image src="/images/iphone15pro-1.jpg" width={250} height={250} />
-              <h4></h4>
-              <p>$1199.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>
-            <div className={styles.cart1}>
-              <Image src="/images/macbookpro-1.jpg" width={250} height={250} />
-              <h4></h4>
-              <p>$1399.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star-half-stroke"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>
-            <div className={styles.cart1}>
-              <Image src="/images/keyboard-1.jpg" width={250} height={250} />
-              <h4></h4>
-              <p>$39.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star-half-stroke"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>{" "}
-            <div className={styles.cart1}>
-              <Image src="/images/monitor-1.jpg" width={250} height={250} />
-              <h4></h4>
-              <p>$1099.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star-half-stroke"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>{" "}
-            <div className={styles.cart1}>
-              <Image src="/images/headset-1.jpg" width={250} height={250} />
-              <h4></h4>
-              <p>$199.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star-half-stroke"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>{" "}
-            <div className={styles.cart1}>
-              <Image src="/images/ultrawatch-1.jpg" width={250} height={250} />
-              <h4></h4>
-              <p>$799.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star-half-stroke"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>{" "}
-            <div className={styles.cart1}>
-              <Image src="/images/s24ultra-1.jpg" width={200} height={250} />
-              <h4></h4>
-              <p>$1299.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star-half-stroke"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>{" "}
-            <div className={styles.cart1}>
-              <Image src="/images/series9-1.jpg" width={250} height={250} />
-              <h4></h4>
-              <p>$399.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star-half-stroke"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>{" "}
-            <div className={styles.cart1}>
-              <Image src="/images/pixel9pro-1.jpg" width={250} height={250} />
-              <h4></h4>
-              <p>$999.99</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star-half-stroke"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>{" "}
-            <div className={styles.cart1}>
-              <Image src="/images/pixel9-1.jpg" width={250} height={250} />
-              <h4></h4>
-              <p>$799.00</p>
-              <div className={styles.rating}>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star-half-stroke"></i>
-              </div>
-              <button className={styles.shopBtn}>
-                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-              </button>
-            </div>
-          </div>
+        <div className={styles.main2}>
+          <h2>All Products</h2>
+          <select
+            className={styles.select}
+            value={sortOption}
+            onChange={handleSortChange}
+          >
+            <option value="default">Default sorting</option>
+            <option value="price">Sort by price</option>
+            <option value="rating">Sort by rating</option>
+            <option value="popularity">Sort by popularity</option>
+            <option value="sale">Sort by sale</option>
+          </select>
         </div>
-        <div>{/* <Footer/> */}</div>
+
+        <div className={styles.cart}>
+          {loading ? (
+            <p>Loading products...</p>
+          ) : error ? (
+            <p>Error: {error}</p>
+          ) : products.length > 0 ? (
+            products.map((product) => (
+              <div key={product._id} className={styles.cart1}>
+                <Image 
+                  src={product.image} 
+                  alt={product.title} 
+                  width={250} 
+                  height={250}
+                  priority={true}
+                  onError={(e) => {
+                    console.log('Image error:', e);
+                    e.target.src = '/placeholder.jpg'; // Add a placeholder image
+                  }}
+                />
+                <h4>{product.title}</h4>
+                <p>${product.price.toFixed(2)}</p>
+                <div className={styles.rating}>
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <i
+                      key={index}
+                      className={`fa-star ${
+                        index < (product.rating || 0) ? "fa-solid" : "fa-regular"
+                      }`}
+                    ></i>
+                  ))}
+                </div>
+                <button className={styles.shopBtn}>
+                  <i className="fa-solid fa-cart-shopping" /> SHOP NOW
+                </button>
+              </div>
+            ))
+          ) : (
+            <p>No products found</p>
+          )}
+        </div>
       </div>
+      <Footer />
     </>
   );
 }

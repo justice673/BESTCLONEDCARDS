@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { v2 as cloudinary } from "cloudinary";
+import { v2 as cloudinary } from 'cloudinary';
 import dbConnect from "@/utils/dbConnect";
 import Product from "@/models/Product";
 
@@ -11,20 +11,23 @@ export const GET = async () => {
     return new NextResponse(JSON.stringify(product), { status: 200 });
   } catch (error) {
     console.log(error);
-    return new NextResponse("Database Error", { status: 500 });
+    // Return JSON error response
+    return new NextResponse(JSON.stringify({ message: "Database Error" }), { status: 500 });
   }
 };
 
 export const POST = async (req) => {
   try {
     const { title, description, price, image } = await req.json();
+    console.log("Received data:", { title, description, price, image });
 
     if (!title || !description || !price || !image) {
-      return new NextResponse("All fields are required", { status: 400 });
+      // Return JSON error response for missing fields
+      return new NextResponse(JSON.stringify({ message: "All fields are required" }), { status: 400 });
     }
 
     // Configure Cloudinary
-    cloudinary.config({
+    console.log("Cloudinary config:",{
       cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
       api_key: process.env.CLOUDINARY_API_KEY,
       api_secret: process.env.CLOUDINARY_API_SECRET,
@@ -48,9 +51,10 @@ export const POST = async (req) => {
 
     await newProduct.save(); // Save the new product in the database
 
-    return new NextResponse(JSON.stringify(newProduct), { status: 200 });
+    return new NextResponse(JSON.stringify(newProduct), { status: 201 });
   } catch (error) {
     console.error("Error:", error);
-    return new NextResponse("Server Error", { status: 500 });
+    // Return JSON error response
+    return new NextResponse(JSON.stringify({ message: "Server Error" }), { status: 500 });
   }
 };

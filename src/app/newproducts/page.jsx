@@ -3,56 +3,63 @@ import React, { useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
 import Navbar from "@/components/Navbar/Navbar";
 import { Notyf } from "notyf";
+import 'notyf/notyf.min.css';
+
 
 const Page = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const router = useRouter();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
-  const [IsLoading, setIsLoading] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    console.log(file);
-    const reader = new FileReader();
-    reader.onload = () => {
-      setImage(reader.result);
-    };
-    reader.readAsDataURL(file);
-    const nowDate = new Date();
+    if (file) {
+      if (file.size > 5000000) { // 5MB limit
+        alert("File is too large. Please select an image under 5MB");
+        return;
+      }
+      
+      setIsLoading(true); // Set loading while reading the image
+
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImage(reader.result);
+        setIsLoading(false); // End loading after reading the image
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleSubmit = async (e) => {
-    const notyf = new Notyf({
-      position: {
-        x: "right",
-        y: "top",
-      },
-    });
-    setIsLoading(true);
     e.preventDefault();
+    const notyf = new Notyf({
+      position: { x: "right", y: "top" },
+      duration: 3000
+    });
+
+    // Validation
+    if (!title || !description || !price || !image) {
+      notyf.error("All fields are required");
+      return;
+    }
+
+    setIsLoading(true);
+    setError("");
 
     const postData = {
-      title,
-      price,
-      description,
-      image,
+      title: title.trim(),
+      description: description.trim(),
+      price: Number(price),
+      image
     };
-    console.log({
-      title,
-      price,
-      description,
-      image,
-    });
-
-    console.log("Submitting data:", postData);
 
     try {
       const res = await fetch("/api/addProduct", {
@@ -63,93 +70,119 @@ const Page = () => {
         body: JSON.stringify(postData),
       });
 
-      console.log("Response status:", res.status);
       const result = await res.json();
-      console.log("Response data:", result);
 
-      if (res.status === 200) {
-        setIsLoading(false);
+      if (res.ok) {
         notyf.success("Product created successfully!");
-        // navigation.push(`/pd-page/allpd`);
-      } else if (res.status === 400) {
-        setIsLoading(false);
-        notyf.error("Check information");
-      } else if (res.status === 500) {
-        setIsLoading(false);
-        notyf.error("Server error");
-      }
+        // Clear form
+        setTitle("");
+        setDescription("");
+        setPrice("");
+        setImage(null);
+        // Redirect to products page
+        router.push('/products');
+      } else {
+        console.log("Response status:", res.status);
+        console.log("Response data:", result);
+        notyf.error(result.error || "Failed to create product");   
+         }
     } catch (error) {
-      setIsLoading(false);
       console.error("Error:", error);
-      notyf.error("An error occurred while creating the post.");
+      notyf.error(error.message || "An error occurred while creating the product");
+    } finally {
+      setIsLoading(false);
     }
   };
+
   return (
     <>
       <div className={styles.navbar}>
         <Navbar />
       </div>
       <div className={styles.mainLeft}>
-        <button className={styles.products} href={"/products"}>
+        <Link href="/products" className={styles.products}>
           All Products
-        </button>
-        <form>
+        </Link>
+        <form onSubmit={handleSubmit}>
           <h1 className={styles.new}>New Product</h1>
-          <label className={styles.inputStyles1}>Product name</label>
-          <input
-            className={styles.inputStyles}
-            type="text"
-            placeholder="Product name"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <label className={styles.inputStyles1}>Photo</label>
-          <div className={styles.photo}>
-            <label className={styles.addPhoto}>
-              {/* Image Preview */}
-              {image ? (
-                <Image
-                  src={image}
-                  alt="Selected preview"
-                  className={styles.previewImage}
-                  width={200}
-                  height={200}
-                />
-              ) : (
-                <div>
-                  <i
-                    className="fa-solid fa-upload"
-                    style={{ color: "#d1d5db3", marginRight: "6px" }}
-                  ></i>
-                  Upload
-                </div>
-              )}
-              <input
-                type="file"
-                style={{ display: "none" }}
-                onChange={handleImageChange} // Attach the event handler
-              />
-            </label>
+          
+          <div className={styles.formGroup}>
+            <label className={styles.inputStyles1}>Product name</label>
+            <input
+              className={styles.inputStyles}
+              type="text"
+              placeholder="Product name"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              disabled={isLoading}
+              required
+            />
           </div>
-          <label className={styles.inputStyles1}>Description</label>
-          <textarea
-            className={styles.inputStyles2}
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <label className={styles.inputStyles1}>Price (in USD)</label>
-          <input
-            className={styles.inputStyles}
-            type="number"
-            placeholder="Price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
+
+          <div className={styles.formGroup}>
+            <label className={styles.inputStyles1}>Photo</label>
+            <div className={styles.photo}>
+              <label className={styles.addPhoto}>
+                {image ? (
+                  <Image
+                    src={image}
+                    alt="Selected preview"
+                    className={styles.previewImage}
+                    width={200}
+                    height={200}
+                  />
+                ) : (
+                  <div>
+                    <i className="fa-solid fa-upload" style={{ marginRight: "6px" }}></i>
+                    Upload
+                  </div>
+                )}
+                <input
+                  type="file"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  onChange={handleImageChange}
+                  disabled={isLoading}
+                />
+              </label>
+            </div>
+          </div>
+
+          <div className={styles.formGroup}>
+            <label className={styles.inputStyles1}>Description</label>
+            <textarea
+              className={styles.inputStyles2}
+              placeholder="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              disabled={isLoading}
+              required
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label className={styles.inputStyles1}>Price (in USD)</label>
+            <input
+              className={styles.inputStyles}
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              disabled={isLoading}
+              required
+            />
+          </div>
+
+          <button 
+            type="submit" 
+            className={styles.saveButton}
+            disabled={isLoading}
+          >
+            {isLoading ? "Saving..." : "Save"}
+          </button>
         </form>
-        <button className={styles.saveButton} onClick={handleSubmit}>
-          {IsLoading ? "Saving..." : "Save"}
-        </button>
       </div>
     </>
   );
