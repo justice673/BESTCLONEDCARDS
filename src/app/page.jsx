@@ -1,10 +1,31 @@
+"use client";
 import Navbar from "@/components/Navbar/Navbar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Footer from "@/components/Footer/Footer";
 
 export default function Page() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("/api/addProduct");
+        if (res.ok) {
+          const data = await res.json();
+          setProducts(data); 
+        } else {
+          console.error("Failed to fetch products");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchProducts(); 
+  }, []);
+
   return (
     <div>
       <div className={styles.navbar}>
@@ -27,11 +48,11 @@ export default function Page() {
           <button className={styles.proofBtn}>PROOF OF DELIVERY</button>
         </div>
       </div>
+      
       <div className={styles.featured}>
         <h2 className={styles.title}>Featured Products</h2>
         <h1>BUY CLONED CARDS ONLINE</h1>
         <p>
-          {" "}
           Are you looking for{" "}
           <span>
             <Link href={"/"}> Cloned Cards </Link>
@@ -44,7 +65,26 @@ export default function Page() {
           you can enjoy all the possibilities of shopping in stores and
           withdrawals along with peace of mind.
         </p>
+
+        {/* Display fetched products */}
+        <div className={styles.productContainer}>
+          {products.map((product) => (
+            <div key={product._id} className={styles.productCard}>
+              <h3>{product.title}</h3>
+              <p>{product.description}</p>
+              <p>Price: ${product.price}</p>
+              {product.image && (
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className={styles.productImage}
+                />
+              )}
+            </div>
+          ))}
+        </div>
       </div>
+      
       <div className={styles.others}>
         <h2 className={styles.title}>OTHER PRODUCTS</h2>
         <h1>BUY UNDETECTABLE COUNTERFEIT BANKNOTES ONLINE</h1>
@@ -62,13 +102,13 @@ export default function Page() {
           problems.
         </p>
       </div>
-      <div>
-        <Footer/>
-      </div>
+
+      <Footer />
+
       <script
         src="//code.tidio.co/1dijdouqaflhloru2yqa5wk0acpyddpi.js"
         async
-      ></script>{" "}
+      ></script>
     </div>
   );
 }

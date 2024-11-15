@@ -1,145 +1,99 @@
+"use client";
 import Navbar from "@/components/Navbar/Navbar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer/Footer";
 
 export default function Page() {
+  const [products, setProducts] = useState([]);
+  const [sortOption, setSortOption] = useState("default");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/api/addProduct"); // Replace with your actual endpoint
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  
+  const handleSortChange = (e) => {
+    setSortOption(e.target.value);
+  };
+
+  // Sort products based on selected option
+  const sortedProducts = [...products].sort((a, b) => {
+    switch (sortOption) {
+      case "price":
+        return a.price - b.price;
+      case "rating":
+        return b.rating - a.rating;
+      case "popularity":
+        return b.popularity - a.popularity;
+      case "sale":
+        return b.sale - a.sale;
+      default:
+        return 0;
+    }
+  });
+
+  // Filter products based on search query
+  const filteredProducts = sortedProducts.filter((product) =>
+    product.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+
   return (
     <div>
       <div className={styles.navbar}>
-        <Navbar />
+      <Navbar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
       </div>
       <div className={styles.main}>
         <h1 className={styles.mainh}>Counterfeit GBP Bills</h1>
       </div>
       <div className={styles.main2}>
-        <select className={styles.select}>
-          <option>Default shorting</option>
-          <option>Short by price</option>
-          <option>Short by rating</option>
-          <option>Short by popularity</option>
-          <option>Short by sale</option>
+      <select className={styles.select} value={sortOption} onChange={handleSortChange}>
+          <option value="default">Default sorting</option>
+          <option value="price">Sort by price</option>
+          <option value="rating">Sort by rating</option>
+          <option value="popularity">Sort by popularity</option>
+          <option value="sale">Sort by sale</option>
         </select>
       </div>
-      <div className={styles.container}>
-        <section className={styles.section}>
-          <h2 className={styles.heading}>
-            GBP Counterfeit Banknotes / GBP Bills / GBP Banknotes
-          </h2>
-          <p>
-            GBP Counterfeit Banknotes can easily be differentiated from the
-            originals through this simple test. The original can be identified
-            by the number of clusters of raised dots in the top left corner. The
-            £5 has none, the £10 has two, the £20 has three and the £50 has four
-            clusters. Buy high-quality GBP Counterfeit Banknotes Online.
-            Worldwide shipping to every destination. Shop with us now to get the
-            best rates from the top producers online. We also have great
-            resources on our blog you can learn everything you need to know
-            about GBP Counterfeit Banknotes online.
-          </p>
-        </section>
-      </div>
       <div className={styles.cart}>
-        <div className={styles.cart1}>
-          <Image src="/images/x-box2.jpeg" width={250} height={250} />
-          <h4>Counterfeit GBP Bills</h4>
-          <h4>
-            {" "}
-            <Link href={"/"}>Counterfeit $5 GBP Bills</Link>
-          </h4>
-          <p>$260.00 - $9,500.00</p>
-          <div className={styles.rating}>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
-        </div>
-        <div className={styles.cart1}>
-          <Image src="/images/samsunglappi-1.jpg" width={250} height={250} />
-          <h4>Counterfeit GBP Bills</h4>
-          <h4>
-            {" "}
-            <Link href={"/"}>Counterfeit $10 GBP Bills</Link>
-          </h4>
-          <p>$260.00 - $9,500.00</p>
-          <div className={styles.rating}>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
-        </div>
-        <div className={styles.cart1}>
-          <Image src="/images/iphone14pro-1.jpg" width={250} height={250} />
-          <h4>Counterfeit GBP Bills</h4>
-          <h4>
-            {" "}
-            <Link href={"/"}>Counterfeit $20 GBP Bills</Link>
-          </h4>
-          <p>$260.00 - $9,500.00</p>
-          <div className={styles.rating}>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
-        </div>
-        <div className={styles.cart1}>
-          <Image src="/images/ps5-1.jpg" width={250} height={250} />
-          <h4>Counterfeit GBP Bills</h4>
-          <h4>
-            {" "}
-            <Link href={"/"}>Counterfeit $50 GBP Bills</Link>
-          </h4>
-          <p>$260.00 - $9,500.00</p>
-          <div className={styles.rating}>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star-half-stroke"></i>
-          </div>
-          <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
-        </div>
-        <div className={styles.cart1}>
-          <Image src="/images/iphone14pro-1.jpg" width={250} height={250} />
-          <h4>Counterfeit GBP Bills</h4>
-          <h4>
-            {" "}
-            <Link href={"/"}>Counterfeit $100 GBP Bills</Link>
-          </h4>
-          <p>$260.00 - $9,500.00</p>
-          <div className={styles.rating}>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <button className={styles.shopBtn}>
-            <i className="fa-solid fa-cart-shopping" /> SHOP NOW
-          </button>
-        </div>
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <div className={styles.cart1} key={product._id}>
+              <Image src={product.image} width={250} height={250} alt={product.title} />
+              <h4>{product.title}</h4>
+              <p>${product.price}</p>
+              <div className={styles.rating}>
+                {[...Array(5)].map((_, i) => (
+                  <i
+                    key={i}
+                    className={i < product.rating ? "fa-solid fa-star" : "fa-regular fa-star"}
+                  ></i>
+                ))}
+              </div>
+              <button className={styles.shopBtn}>
+                <i className="fa-solid fa-cart-shopping" /> SHOP NOW
+              </button>
+            </div>
+          ))
+        ) : (
+          <p>No products found</p>
+        )}
       </div>
       <div className={styles.container}>
-        <section className={styles.section}>
+      <section className={styles.section}>
           <h2 className={styles.heading}>
             {" "}
             Counterfeit Money / Prop Money / GBP Counterfeit Banknotes

@@ -3,7 +3,6 @@ import Navbar from '@/components/Navbar/Navbar';
 import React, { useState } from 'react';
 import styles from './page.module.css';
 import Link from 'next/link';
-// Make sure to import Font Awesome in your project
 
 export default function Page() {
   const [showPassword, setShowPassword] = useState(false);
