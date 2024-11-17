@@ -17,9 +17,9 @@ export const GET = async () => {
 
 export const POST = async (req) => {
   try {
-    const { title, description, price, image } = await req.json();
+    const { title, description, category, price, image } = await req.json();
 
-    if (!title || !description || !price || !image) {
+    if (!title || !description || !category || !price || !image) {
       return new NextResponse("All fields are required", { status: 400 });
     }
 
@@ -42,6 +42,7 @@ export const POST = async (req) => {
     const newProduct = new Product({
       title,
       description,
+      category,
       price,
       image: uploadResult.secure_url, // Save the Cloudinary URL
     });

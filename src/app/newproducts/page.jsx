@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import Navbar from "@/components/Navbar/Navbar";
 import { Notyf } from "notyf";
-import 'notyf/notyf.min.css'; 
+import "notyf/notyf.min.css";
 
 const notyf = new Notyf({
   position: {
@@ -19,6 +19,7 @@ const Page = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
   const [IsLoading, setIsLoading] = useState(false);
@@ -45,6 +46,7 @@ const Page = () => {
       price,
       description,
       image,
+      category,
     };
 
     try {
@@ -90,15 +92,21 @@ const Page = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-       <div>
-        <label className={styles.inputStyles1}>Category</label>
-        <select name="category" id="category" className={styles.inputStyles}>
-        <option value="usd">USD BILLS</option>
-        <option value="cad">CAD BILLS</option>
-        <option value="gbp">GBP BILLS</option>
-        <option value="euro">EURO BILLS</option>
-        </select>
-       </div>
+          <div>
+            <label className={styles.inputStyles1}>Category</label>
+            <select
+              name="category"
+              id="category"
+              className={styles.inputStyles}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="usd">USD BILLS</option>
+              <option value="cad">CAD BILLS</option>
+              <option value="gbp">GBP BILLS</option>
+              <option value="euro">EURO BILLS</option>
+            </select>
+          </div>
           <label className={styles.inputStyles1}>Photo</label>
           <div className={styles.photo}>
             <label className={styles.addPhoto}>
