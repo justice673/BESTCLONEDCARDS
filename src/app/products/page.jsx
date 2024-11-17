@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Footer from "@/components/Footer/Footer";
+import Link from "next/link";
 
 export default function Page() {
   const [products, setProducts] = useState([]);
@@ -108,7 +109,9 @@ export default function Page() {
                   ))}
                 </div>
                 <button className={styles.shopBtn}>
+                  <Link href={"/addtocart"}>
                   <i className="fa-solid fa-cart-shopping" /> SHOP NOW
+                  </Link>
                 </button>
               </div>
             ))

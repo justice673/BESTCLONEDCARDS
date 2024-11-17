@@ -90,6 +90,15 @@ const Page = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+       <div>
+        <label className={styles.inputStyles1}>Category</label>
+        <select name="category" id="category" className={styles.inputStyles}>
+        <option value="usd">USD BILLS</option>
+        <option value="cad">CAD BILLS</option>
+        <option value="gbp">GBP BILLS</option>
+        <option value="euro">EURO BILLS</option>
+        </select>
+       </div>
           <label className={styles.inputStyles1}>Photo</label>
           <div className={styles.photo}>
             <label className={styles.addPhoto}>
